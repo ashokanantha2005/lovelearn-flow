@@ -15,6 +15,7 @@ import Assignments from "./pages/dashboard/Assignments";
 import Submissions from "./pages/dashboard/Submissions";
 import NotFound from "./pages/NotFound";
 import { useAuth } from "./hooks/useAuth";
+import CreateAssignment from "./pages/dashboard/CreateAssignment"; // ADDED
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,13 @@ const App = () => (
           <Route path="/dashboard/students" element={<DashboardLayout><div className="text-center py-12 text-muted-foreground">Students page coming soon</div></DashboardLayout>} />
           <Route path="/dashboard/grades" element={<DashboardLayout><div className="text-center py-12 text-muted-foreground">Grades page coming soon</div></DashboardLayout>} />
           <Route path="/dashboard/notifications" element={<DashboardLayout><div className="text-center py-12 text-muted-foreground">Notifications page coming soon</div></DashboardLayout>} />
+          <Route path="/course/:id" element={<CourseDetail />} />
+  
+          <Route path="/dashboard" element={<DashboardLayout><DashboardRedirect /></DashboardLayout>} />
+          <Route path="/dashboard/courses" element={<DashboardLayout><MyCourses /></DashboardLayout>} />
+          <Route path="/dashboard/create-course" element={<DashboardLayout><CreateCourse /></DashboardLayout>} />
+          <Route path="/dashboard/create-assignment" element={<DashboardLayout><CreateAssignment /></DashboardLayout>} /> {/* ADDED */}
+          <Route path="/dashboard/assignments" element={<DashboardLayout><Assignments /></DashboardLayout>} />
           
           <Route path="*" element={<NotFound />} />
         </Routes>
