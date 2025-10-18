@@ -392,3 +392,96 @@ export const Constants = {
     },
   },
 } as const
+// ... (existing code)
+
+  public: {
+    Tables: {
+      assignments: {
+        Row: {
+          assignment_type: Database["public"]["Enums"]["assignment_type"] // ADDED
+          course_id: string
+          // ... (other fields)
+          file_url: string | null
+          id: string
+          questions: Json | null // ADDED
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          assignment_type?: Database["public"]["Enums"]["assignment_type"] // ADDED
+          // ... (other fields)
+          file_url?: string | null
+          id?: string
+          questions?: Json | null // ADDED
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          assignment_type?: Database["public"]["Enums"]["assignment_type"] // ADDED
+          // ... (other fields)
+          file_url?: string | null
+          id?: string
+          questions?: Json | null // ADDED
+          title?: string
+          updated_at?: string
+        }
+        // ... (Relationships)
+      }
+      // ... (courses, enrollments, grades, profiles tables)
+      submissions: {
+        Row: {
+          answers: Json | null // ADDED
+          assignment_id: string
+          file_url: string | null
+          id: string
+          notes: string | null
+          student_id: string
+          submitted_at: string
+        }
+        Insert: {
+          answers?: Json | null // ADDED
+          assignment_id: string
+          file_url?: string | null
+          id?: string
+          notes?: string | null
+          student_id: string
+          submitted_at?: string
+        }
+        Update: {
+          answers?: Json | null // ADDED
+          assignment_id?: string
+          file_url?: string | null
+          id?: string
+          notes?: string | null
+          student_id?: string
+          submitted_at?: string
+        }
+        // ... (Relationships)
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      assignment_type: "file_upload" | "quiz" // ADDED
+      user_role: "student" | "teacher"
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
+}
+
+// ... (rest of code)
+
+export const Constants = {
+  public: {
+    Enums: {
+      assignment_type: ["file_upload", "quiz"], // ADDED
+      user_role: ["student", "teacher"],
+    },
+  },
+} as const
